@@ -16,10 +16,9 @@
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
                 </div>
-
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('fb-ads') }}" :active="request()->routeIs('fb-ads')">
-                        {{ __('Fb-Ads') }}
+                    <x-jet-nav-link href="{{ route('facebook-management') }}" :active="request()->routeIs('facebook-management')">
+                        {{ __('facebook-management') }}
                     </x-jet-nav-link>
                 </div>
             </div>

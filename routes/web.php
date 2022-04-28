@@ -31,3 +31,5 @@ Route::get('auth/facebook', [App\Http\Controllers\SocialController::class, 'face
 Route::get('auth/facebook/callback', [App\Http\Controllers\SocialController::class, 'loginWithFacebook']);
 Route::get('fb-ads', [App\Http\Controllers\FbAdsController::class, 'index'])->name('fb-ads');
 
+Route::get('facebook-management', [App\Http\Livewire\FacebookManagement::class, 'render'])->name('facebook-management');
+

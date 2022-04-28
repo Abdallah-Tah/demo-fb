@@ -17,7 +17,9 @@ class FbAdsController extends Controller
      */
     public function index()
     {
-        $accessToken = 'EAAMzfjwbeW0BAJi1ZAwO70h6QucK3Y9vdO1tc6ZAQImB9o9BrFnZAO73SBFGZAtbqrCvWAt46rsWSGzmAK8mRQ5ZAdObruLMZBejQPW0kq8872kREhleZBODaZCZCdq7drSqfHPdpn6b0hjY0Ww5y6H97W2skZARG5oqHZABaKg6NYGK0BSt9I8k2uzN6dPQ88pjCLosvXBDc4M8RQNSZB5WrUYcYayE9lyBRN9Mq7YIK1ZAxFHldb016A2FAMq23XZA4CndQZD';
+        //$accessToken = 'EAAMzfjwbeW0BAL6uyRKxq9Q5oN3f0EYUGPK6iygpfPj2qMBQkkjCKsT3oLZARCDC4UzwxI3KseJibv8oR5fZBS9q9XvWtCZB2yoWiWcNmOLYlqAfHw329AcPUkprTIX5ieT7Pi5AnNhLzBkvWxvuklaf9tzkMJkuxFNDM406TfKwhcsZBZC01uF9wxXSDstIZD';
+        $user = Socialite::driver('facebook')->user();
+        $accessToken = $user->token;
         $access = FacebookAds::init($accessToken);
         $ads = FacebookAds::adAccounts()->all()->map(function ($adAccount) {
             return $adAccount->ads(
@@ -32,9 +34,8 @@ class FbAdsController extends Controller
                 ]
             );
           });
-        dd($ads);
-        $fbAds = FbAds::all();
-        return view('fb-ads.index', compact('fbAds'));
+
+        return view('fb-ads.index', compact('ads'));
     }
 
     /**
